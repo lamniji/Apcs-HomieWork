@@ -17,22 +17,22 @@ public class QuickSortB{
 	int wall=l;
 	int Rwall = 0;
 
-	for (int j=wall;j<r;j++) {
+	for (int j=wall;j<=r;j++) {
 	    Rwall = wall;
 	    if(a[j] == pivot){
-		tmp = a[Rwall];
-		a[Rwall]=a[j];
-		a[j]=tmp;
+		tmp = a[j];
+		a[j]=a[Rwall];
+		a[Rwall]=tmp;
 		Rwall++;
 	    }else if (a[j]<pivot) {
 		tmp = a[j];
 		a[j]=a[wall];
 		a[wall]=tmp;
-		wall++;
+		wall++;Rwall++;
 	    }
 	}
-	tmp = a[wall];
-	a[wall]=a[r];
+	tmp = a[Rwall];
+	a[Rwall]=a[r];
 	a[r]=tmp;
 	return ((Rwall + wall)/2);
     }
