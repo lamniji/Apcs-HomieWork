@@ -17,22 +17,22 @@ public class QuickSortB{
 	int wall=l;
 	int Rwall = 0;
 
-	for (int j=wall;j<=r;j++) {
+	for (int j=wall;j<r;j++) {
 	    Rwall = wall;
 	    if(a[j] == pivot){
 		tmp = a[j];
 		a[j]=a[Rwall];
 		a[Rwall]=tmp;
 		Rwall++;
-	    }else if (a[j]<pivot) {
+	    }else if (a[j]<=pivot) {
 		tmp = a[j];
-		a[j]=a[wall];
-		a[wall]=tmp;
+		a[j]=a[Rwall];
+		a[Rwall]=tmp;
 		wall++;Rwall++;
 	    }
 	}
-	tmp = a[Rwall];
-	a[Rwall]=a[r];
+	tmp = a[wall];
+	a[wall]=a[r];
 	a[r]=tmp;
 	return ((Rwall + wall)/2);
     }
@@ -54,9 +54,20 @@ public class QuickSortB{
     }
     public static void main(String[] arrrgs){
 	QuickSortB a = new QuickSortB();
-	int[] test = {24,15,4,7,1,2,4,6,7,156,147,158,1,45,2};
-	a.qsort(test);
-	System.out.println(Arrays.toString(test));
+	int[] test1 = {24,15,4,7,1,2,4,6,7,156,147,158,1,45,2};
+	a.qsort(test1);
+	int [] test2 = new int[10000];
+	    for(int i = 0; i<test2.length;i++){
+		test2[i] = a.rnd.nextInt(1000);
+	    }
+	System.out.println(Arrays.toString(test1));
+	int[] temp = test2;
+	a.qsort(test2);
+	Arrays.sort(temp);
+	if(test2==temp)
+	    System.out.println("WORKS");
+	//System.out.println(Arrays.toString(test2));
+    
     }
 
 }
