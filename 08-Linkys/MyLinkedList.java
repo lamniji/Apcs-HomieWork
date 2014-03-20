@@ -1,0 +1,116 @@
+public class MyLinkedList{
+    private Node head;
+    public MyLinkedList(){
+	head = null;
+    }
+    public String toString(){
+	return ""+head;
+    }
+    public void add(String d){
+	Node tmp = new Node(d);
+	tmp.setNext(head);
+	head = tmp;
+    }
+    public void add(int i, String s){
+	boolean isDone = false;
+	int index = 0;
+	Node current = head;
+	Node prior = head;
+	while (! isDone){
+	    if(index == i){
+		Node fresh = new Node(s);
+		prior.setNext(fresh);
+		fresh.setNext(current);
+		isDone = true;
+	    }else{
+		prior = current;
+		current = current.getNext();
+	    }
+	    index++;
+	}
+    }
+    public String get(int i){
+	boolean isDone = false;
+	Node current = head;
+	int index = 0;
+	String ans = null;
+	while(! isDone){
+	    if (i == index){
+		isDone = true;
+		ans = current.getData();
+	    }else{
+		current = current.getNext();
+		index ++;
+	    }
+	}
+	return ans;
+    }
+
+    public String remove(int i){
+	boolean isDone = false;
+	int index = 0;
+	Node current = head;
+	Node prior = head;
+	String ans = null;
+	while (! isDone){
+	    if(index == i){
+		ans = current.getData();
+		prior.setNext(current.getNext());
+		isDone = true;
+	    }else{
+		prior = current;
+		current = current.getNext();
+	    }
+	    index++;
+	}
+	return ans;
+    }
+
+    public String set(int i, String s){
+	boolean isDone = false;
+	Node current = head;
+	int index = 0;
+	String ans = null;
+	while(! isDone){
+	    if (i == index){
+		isDone = true;
+		ans = current.getData();
+		current.setData(s);
+	    }else{
+		current = current.getNext();
+		index ++;
+	    }
+	}
+	return ans;
+    }
+
+    public int find(String s){
+	boolean isDone = false;
+	Node current = head;
+	int index = 0;
+	int ans = 0;
+	while(! isDone){
+	    if (current.getData() == s){
+		isDone = true;
+		ans = index;
+	    }else{
+		current = current.getNext();
+		index ++;
+	    }
+	}
+	return ans;
+    }
+
+    public int length(){
+	int length = 0;
+	Node current = head;
+	while(current.getNext() != null){
+	    length++;
+	    current = current.getNext();
+	}
+	return length;
+    }
+
+
+
+} 
