@@ -5,9 +5,10 @@ public class Driver{
 	stack.push("two");
 	stack.push("three");
 	System.out.println(stack);
+	System.out.print(stack.peek());
 	while(stack.isEmpty() == false)
 	    System.out.println(stack.pop());
-	System.out.print(stack.peek());
+
     }
     
 }
