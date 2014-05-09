@@ -57,6 +57,18 @@ public class BetterStack {
 	return s;
     }
 
+    public int size(){
+	int l = 0;
+	String[] tmp = new String[_stack.length];
+	tmp = _stack;
+	int i = 0;
+	while(tmp[i] != null){
+	    l++;
+	    i++;
+	}
+	return l;
+    }
+
     public static void main(String[] arrgs){
 	BetterStack a = new BetterStack();
 	a.push("one");

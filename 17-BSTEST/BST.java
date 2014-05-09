@@ -5,16 +5,25 @@ public class BST{
 	root = null;
     }
 
+    public Node getRoot(){
+	return root;
+    }
+
     public void insert(Node n){
-	Node pointer = root;
-	while (pointer != null){
-	    if(pointer.getData() < n.getData())
-		pointer = pointer.getRight();
-	    else
-		pointer = pointer.getLeft();
+	if(root == null)
+	    root = n;
+	else{
+	    Node pointer = root;
+	    while (pointer != null){
+		if(pointer.getData() < n.getData())
+		    pointer = pointer.getRight();
+		else
+		    pointer = pointer.getLeft();
+	    }
+	    //Reached desired location
+	    pointer = n;
+    
 	}
-	//Reached desired location
-	pointer = n;
     }
 
 
@@ -94,8 +103,31 @@ public class BST{
 	
     }
 
+    public void traverse(){
+	traverse(root);
+    }
 
+    public void traverse(Node n){
+	if(n == null)
+	    return;
+	else{
+	    System.out.println(n.getData());
+	    traverse(n.getLeft());
+	    traverse(n.getRight());
+	}
+    }
 
+    public static void main(String[] arrrgs){
+	BST a = new BST();
+	a.insert(new Node(50));
+	a.insert(new Node(47));
+	a.insert(new Node(34));
+	a.insert(new Node(40));
+	a.insert(new Node(38));
+	a.insert(new Node(39));
+	a.insert(new Node(7));
+	a.traverse();
+    }
 }
 
 

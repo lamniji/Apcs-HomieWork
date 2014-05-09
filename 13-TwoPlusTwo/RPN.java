@@ -1,11 +1,11 @@
 import java.util.*;
 public class RPN{
-    private ArrayStack stack = new ArrayStack();
+    private BetterStack stack = new BetterStack();
     private int current;
-    private ArrayStack compblock = new ArrayStack();
+    private BetterStack compblock = new BetterStack();
     
     public String Calculate(String s){
-	if(s.indexOf(" ") == -1)
+	if(compblock.size() == 1)
 	    return s;
 	for(int i = 0; i < s.length();i++){
 	    String tmp = "";
@@ -14,7 +14,7 @@ public class RPN{
 	    else
 		stack.push(tmp);
 	}
-	while(stack.peek() != "+" && stack.peek() != "-" && stack.peek() != "*" && stack.peek() != "/" && stack.peek() != null)
+	while(stack.peek().equals("+") && stack.peek().equals("-") && stack.peek().equals("*") && stack.peek().equals("/") && stack.peek().equals(null))
 	    compblock.push(stack.pop());
 	String tmp = stack.pop();
 	    if(tmp == "+"){
